@@ -1,0 +1,58 @@
+---
+const navItems = [
+  {
+    href: "/",
+    label: "label",
+  },
+  {
+    href: "/projects",
+    label: "projects",
+  },
+  {
+    href: "/resume",
+    label: "resume",
+  },
+  {
+    href: "/journal",
+    label: "journal",
+  },
+];
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+console.log(Astro.props);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        {
+          navItems.map((item) => (
+            <a href={item.href} class="text-4xl italic font-thin text-tertiary">
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <main>
+        <slot />
+      </main>
+      <footer></footer>
+    </header>
+  </body>
+</html>
